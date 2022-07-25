@@ -29,3 +29,13 @@ p {
 body {
     background-color: #000;
 }
+
+#but1 {
+    background-color: black;
+    color: wheat;
+}
+
+.but2 {
+    background-color: white;
+    color: black;
+}
