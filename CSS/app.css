@@ -39,3 +39,19 @@ body {
     background-color: white;
     color: black;
 }
+
+span button {
+    text-decoration: line-through;
+}
+
+span+p {
+    background-color: #faFF21;
+}
+
+body>p {
+    font-size: smaller;
+}
+
+p>p {
+    font-size: x-large;
+}
