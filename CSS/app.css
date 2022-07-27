@@ -60,3 +60,15 @@ input[type="password"] {
     width: 300px;
     height: 100px;
 }
+
+button:hover {
+    background-color: rgb(41, 126, 34);
+}
+
+button:active {
+    background-color: yellow;
+}
+
+p:nth-of-type(2) {
+    background-color: aqua;
+}
