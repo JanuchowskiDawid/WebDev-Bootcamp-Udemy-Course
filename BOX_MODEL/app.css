@@ -58,3 +58,15 @@ span {
     display: inline-block;
     margin: 50px;
 }
+
+section {
+    background-color: #545b66;
+    width: 800px;
+    height: 800px;
+}
+
+#sectiondiv {
+    background-color: #00ADB5;
+    width: 50%;
+    height: 50%;
+}
