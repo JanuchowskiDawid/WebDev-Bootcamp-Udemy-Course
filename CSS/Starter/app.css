@@ -1,0 +1,14 @@
+nav {
+    font-family: 'Square Peg', cursive;
+    width: 35%;
+    font-weight: bolder;
+    font-size: 3em;
+    border-bottom: 3px solid rgba(128, 128, 128, 0.789);
+}
+
+img {
+    position: static;
+    width: 30%;
+    height: 50%;
+    margin: calc(10%/6);
+}
