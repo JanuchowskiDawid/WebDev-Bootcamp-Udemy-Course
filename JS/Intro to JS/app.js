@@ -22,40 +22,40 @@
 // } else {
 //     console.log("too short");
 // }
-const userInput = prompt("enter smt");
-if (userInput) {
-    console.log("true");
-} else {
-    console.log("false");
-}
-const day = 2;
+// const userInput = prompt("enter smt");
+// if (userInput) {
+//     console.log("true");
+// } else {
+//     console.log("false");
+// }
+// const day = 2;
 
-switch (day) {
-    case 1: s
-        console.log("Monday");
-        break;
-    case 2:
-        console.log("Not a Monday");
-        break;
-    case 3:
-        console.log("Not a Monday");
-        break;
-    case 4:
-        console.log("Not a Monday");
-        break;
-    case 5:
-        console.log("Not a Monday");
-        break;
-    case 6:
-        console.log("Not a Monday");
-        break;
-    case 7:
-        console.log("Not a Monday");
-        break;
-    default:
-        console.log("Not a day");
+// switch (day) {
+//     case 1: s
+//         console.log("Monday");
+//         break;
+//     case 2:
+//         console.log("Not a Monday");
+//         break;
+//     case 3:
+//         console.log("Not a Monday");
+//         break;
+//     case 4:
+//         console.log("Not a Monday");
+//         break;
+//     case 5:
+//         console.log("Not a Monday");
+//         break;
+//     case 6:
+//         console.log("Not a Monday");
+//         break;
+//     case 7:
+//         console.log("Not a Monday");
+//         break;
+//     default:
+//         console.log("Not a day");
 
-}
+// }
 
 /*I've provided you with an array called airplaneSeats, which represents the rows of seats on a flight.  Our friend Hugo is looking to book a seat on our flight. Fortunately, there is one middle seat available (it's set to null currently).  Please update the array element that is currently null, to instead be "Hugo". (Please don't directly change the code on line 6 where I'm initially setting it to null.  This is an exercise in accessing data in nested arrays!)
 
@@ -70,3 +70,18 @@ const airplaneSeats = [
 
 // YOUR CODE GOES BELOW THIS LINE:
 airplaneSeats.splice(3,1,['Luke','Hugo','Deniz']);*/
+
+for (let i = 0; i <= 20; i += 2) {
+    console.log(i);
+}
+
+for (let i = 25; i >= 0; i -= 5) {
+    console.log(i);
+}
+
+const SECRET = "JBCPIS";
+
+let guess = prompt("enter secret code...");
+while (guess !== SECRET) {
+    guess = prompt("enter secret code...");
+}
