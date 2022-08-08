@@ -4,9 +4,11 @@ const allLinks = document.querySelectorAll('a');
 //     link.innerText = 'I AM A LINK!!!!'
 // }
 
+const textInner = document.querySelector("h1");
+textInner.textContent = "OMG!";
 
 for (let link of allLinks) {
-    link.style.color = 'rgb(0, 108, 134)';
-    link.style.textDecorationColor = 'magenta';
-    link.style.textDecorationStyle = 'wavy'
+    link.innerText = "I AM A LINK!";
 }
+const inputText = document.querySelector("input[type=text]");
+inputText.setAttribute('placeholder', 'OMG I AM ACCESSED VIA CODE!');
