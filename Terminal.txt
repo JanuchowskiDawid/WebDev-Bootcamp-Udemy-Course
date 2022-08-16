@@ -1,0 +1,20 @@
+MMAlpa@DESKTOP-706N9L1 MINGW64 ~/Desktop
+$ ls
+Apps/  Games/  Programming/  desktop.ini
+//Lista folderów/plików w bieżącym katalogów
+
+MMAlpa@DESKTOP-706N9L1 MINGW64 ~/Desktop
+$ pwd
+/c/Users/MMAlpa/Desktop
+//aktualna ścieżka
+
+MMAlpa@DESKTOP-706N9L1 MINGW64 ~/Desktop
+$ cd Apps/
+//zmiana folderu
+
+MMAlpa@DESKTOP-706N9L1 MINGW64 ~/Desktop/Apps
+$ cd ..
+
+MMAlpa@DESKTOP-706N9L1 MINGW64 ~/Desktop
+//zmiana folderu w górę
+
