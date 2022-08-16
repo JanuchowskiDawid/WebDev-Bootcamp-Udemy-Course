@@ -18,3 +18,19 @@ $ cd ..
 MMAlpa@DESKTOP-706N9L1 MINGW64 ~/Desktop
 //zmiana folderu w górę
 
+mmalp@DESKTOP-I7NQRSU MINGW64 ~/OneDrive/Dokumenty
+$ pwd
+/c/Users/mmalp/OneDrive/Dokumenty
+
+mmalp@DESKTOP-I7NQRSU MINGW64 ~/OneDrive/Dokumenty
+$ cd /c/Users/mmalp/
+
+//używanie cd i zaczynanie ścieżki od / traktuje ścieżkę absoultnie, można z folderu beżącego przejść bezpośrednio do innego używając globalnej ścieżki
+
+mmalp@DESKTOP-I7NQRSU MINGW64 ~/OneDrive/Dokumenty
+$ cd /c/Users/mmalp/
+
+mmalp@DESKTOP-I7NQRSU MINGW64 ~
+$ cd ../..
+
+//cd ../.. przenosi 2 poziomy w górę
