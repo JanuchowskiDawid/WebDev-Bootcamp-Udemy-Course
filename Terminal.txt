@@ -47,3 +47,23 @@ $ ls
 CSS/  Classes/  HTML/  JS/  NewFolder/  Prototypes/  Requests/  Terminal.txt
 //mkdir tworzy nowy folder o nazwie podanej po spacji
 
+mmalp@DESKTOP-I7NQRSU MINGW64 ~/OneDrive/Dokumenty/WebDev-Bootcamp-Udemy-Course (main)
+$ ls --help
+Usage: ls [OPTION]... [FILE]...
+List information about the FILEs (the current directory by default).
+Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -a, --all                  do not ignore entries starting with .
+  -A, --almost-all           do not list implied . and ..
+      --author               with -l, print the author of each file
+
+//man komenda powinno dawać info o komendzie, w git bashu nie ma takiej opcji, jako alternatywa - komenta --help
+
+mmalp@DESKTOP-I7NQRSU MINGW64 ~/OneDrive/Dokumenty/WebDev-Bootcamp-Udemy-Course (main)
+$ touch NewFile.txt
+ls
+mmalp@DESKTOP-I7NQRSU MINGW64 ~/OneDrive/Dokumenty/WebDev-Bootcamp-Udemy-Course (main)
+$ ls
+CSS/  Classes/  HTML/  JS/  NewFile.txt  NewFolder/  Prototypes/  Requests/  Terminal.txt
+//touch tworzy nowy plik z rozszerzeniem podanym po kropce
