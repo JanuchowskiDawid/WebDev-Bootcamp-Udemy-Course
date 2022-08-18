@@ -34,3 +34,16 @@ mmalp@DESKTOP-I7NQRSU MINGW64 ~
 $ cd ../..
 
 //cd ../.. przenosi 2 poziomy w górę
+
+mmalp@DESKTOP-I7NQRSU MINGW64 ~/OneDrive/Dokumenty/WebDev-Bootcamp-Udemy-Course (main)
+$ ls
+CSS/  Classes/  HTML/  JS/  Prototypes/  Requests/  Terminal.txt
+
+mmalp@DESKTOP-I7NQRSU MINGW64 ~/OneDrive/Dokumenty/WebDev-Bootcamp-Udemy-Course (main)
+$ mkdir NewFolder
+
+mmalp@DESKTOP-I7NQRSU MINGW64 ~/OneDrive/Dokumenty/WebDev-Bootcamp-Udemy-Course (main)
+$ ls
+CSS/  Classes/  HTML/  JS/  NewFolder/  Prototypes/  Requests/  Terminal.txt
+//mkdir tworzy nowy folder o nazwie podanej po spacji
+
