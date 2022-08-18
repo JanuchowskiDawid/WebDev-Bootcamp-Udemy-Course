@@ -66,4 +66,16 @@ ls
 mmalp@DESKTOP-I7NQRSU MINGW64 ~/OneDrive/Dokumenty/WebDev-Bootcamp-Udemy-Course (main)
 $ ls
 CSS/  Classes/  HTML/  JS/  NewFile.txt  NewFolder/  Prototypes/  Requests/  Terminal.txt
-//touch tworzy nowy plik z rozszerzeniem podanym po kropce
+//touch tworzy nowy plik z rozszerzeniem podanym po kropce. ogólnie służy do zmiany dostępności pliku
+
+mmalp@DESKTOP-I7NQRSU MINGW64 ~/OneDrive/Dokumenty/WebDev-Bootcamp-Udemy-Course (main)
+$ ls
+CSS/  Classes/  HTML/  JS/  NewFile.txt  NewFolder/  Prototypes/  Requests/  Terminal.txt
+
+mmalp@DESKTOP-I7NQRSU MINGW64 ~/OneDrive/Dokumenty/WebDev-Bootcamp-Udemy-Course (main)
+$ rm NewFile.txt
+
+mmalp@DESKTOP-I7NQRSU MINGW64 ~/OneDrive/Dokumenty/WebDev-Bootcamp-Udemy-Course (main)
+$ rmdir NewFolder/
+
+//rm usuwa plik rmdir usuwa folder
