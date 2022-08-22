@@ -1,0 +1,3 @@
+node to implementacja JS. Pozwala na odpalanie kodu JS z ominięciem przeglądarki
+w node pracujemy jak w konsoli w chromie, nie mamy document i windowe
+global zamiast window to "global"
