@@ -11,7 +11,7 @@ app.use(express.json());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-comments = [
+let comments = [
     {
         id: uuid(),
         username: 'Todd',
@@ -41,7 +41,7 @@ app.get('/comments', (req, res) => {
 app.post('/comments', (req, res) => {
     const { username, comment } = req.body;
     comments.push({ username, comment, id: uuid() });
-    res.redirect("comments");
+    res.redirect("/comments");
 })
 
 app.get('/comments/:id', (req, res) => {
@@ -63,7 +63,7 @@ app.get('/comments/new', (req, res) => {
     const comment = comments.find(c => c.id === id).comment;
     comment = req.body.comment;
     res.render('comments/new');
-    res.redirect("comments");
+    res.redirect("/comments");
 })
 
 app.post('/', (req, res) => {
@@ -78,4 +78,10 @@ app.get('/comments/:id/edit', (req, res) => {
     const { id } = req.params;
     const comment = comments.find(c => c.id === id);
     res.render('comments/edit', { comment });
+})
+
+app.delete('/comments/:id', (req, res) => {
+    const { id } = req.params;
+    comments = comments.filter(c => c.id !== id);
+    res.redirect("/comments");
 })
