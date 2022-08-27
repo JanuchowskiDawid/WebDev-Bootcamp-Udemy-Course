@@ -1,0 +1,23 @@
+use *db name* - przełącza na bazę danych, jak nie ma to tworzy
+db - pokazuje obecną bazę danych
+show collections - pokazuje kolekcje
+db.*db name*.insertOne() - dodaje 1 obiekt do kolekcji
+db.*db name*.insert() - dodaje wiele lub 1 obiekt do kolekcji
+przy wprowadzaniu elementu _id jest dodawane automatycznie
+db.*db name*.find() - wyświetla elementy kolecji
+db.*db name*.find({parametr: wartość}) - wyświetla elementy kolecji z danym parametrem o danej wartości
+db.*db name*.updateOne() - zmienia 1 z rekordów
+db.*db name*.updateMany() - zmienia wiele z rekordów
+db.*db name*.replace() - podmienia obiekt
+({name: 'doggo"}, {$set({name:'catto'}, $currentDate{lastChange: true})}) <- przykład wsada do update
+db.*db name*.deleteOne() - usuwa 1 z rekordów
+db.*db name*.deleteMany() - usuwa wiele z rekordów
+W nawiasie podajemy parametry rekordów
+
+jeżeli chcemy znajeźć jeden z elementów obiektu w obiekcie property wyszukiwane wpisujemy w ''
+db.*db name*.find(np. 'personality.dogFriendly = true')
+
+Operatory wyszukiwania $in {} -jedna z wielu wartości
+$lt less then
+$lte  less then equal
+
