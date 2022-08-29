@@ -18,12 +18,15 @@
         <ul>
             <li>Price: <%= product.price %>$
             </li>
-            <li>category: <%= product.catergory %>
+            <li>category: <a href="/products?category=<%= product.catergory %>">
+                    <%= product.catergory %>
+                </a>
             </li>
         </ul>
     </section>
     <a href="/products">Back to products</a>
     <a href="/products/<%= product._id %>/edit">Edit</a>
+    <form action="/products/<%= product._id %>?_method=DELETE" method="post"><button>Delete</button></form>
 
 </body>
 
