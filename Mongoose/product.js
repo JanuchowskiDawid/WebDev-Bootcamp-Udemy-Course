@@ -46,6 +46,10 @@ productSchema.methods.toggleOnSale = function () {
     return this.save();
 }
 
+productSchema.statics.fireSale = function () {
+    return this.updateMany({}, { onSale: true, price: 0 });
+}
+
 const Product = mongoose.model('Product', productSchema);
 // const helmet = new Product({ name: 'Bike Helmet', price: 19.90, categories: ['cycling', 'safety'] })
 // helmet.save();
@@ -67,4 +71,5 @@ const findProduct = async () => {
     await foundProduct.toggleOnSale();
     console.log(foundProduct);
 }
-findProduct();
+Product.fireSale().then(res => console.log(res));
+//findProduct();
