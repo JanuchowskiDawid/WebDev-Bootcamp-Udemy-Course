@@ -10,13 +10,15 @@
 
 <body>
     <h1>All products!</h1>
-    <% for(let product of products){ %>
-        <ul>
-            <li>
-                <%= product.name %> - <%= product.price %>$
-            </li>
-        </ul>
-        <% } %>
+    <section>
+        <% for(let product of products){ %>
+            <ul>
+                <li>
+                    <%= product.name %> - <%= product.price %>$ <a href="/products/<%= product.id %> ">details</a>
+                </li>
+            </ul>
+            <% } %>
+    </section>
 </body>
 
 </html>
