@@ -33,15 +33,38 @@ const productSchema = mongoose.Schema({
     }
 });
 
-const Product = mongoose.model('Product', productSchema);
 
-const bike = new Product({ name: 'Mountain Bike', price: 1820, categories: ['mountains', 'bikes'] });
-bike.save()
-    .then(data => {
-        console.log('done');
-        console.log(data);
-    })
-    .catch(err => {
-        console.log('error');
-        console.log(err);
-    })
+
+
+productSchema.methods.greet = function () {
+    console.log("Hello!");
+    console.log(` - from ${this.name}`);
+}
+
+productSchema.methods.toggleOnSale = function () {
+    this.onSale = !this.onSale;
+    return this.save();
+}
+
+const Product = mongoose.model('Product', productSchema);
+// const helmet = new Product({ name: 'Bike Helmet', price: 19.90, categories: ['cycling', 'safety'] })
+// helmet.save();
+// const bike = new Product({ name: 'Mountain Bike', price: 1820, categories: ['mountains', 'bikes'] });
+// bike.save()
+//     .then(data => {
+//         console.log('done');
+//         console.log(data);
+//     })
+//     .catch(err => {
+//         console.log('error');
+//         console.log(err);
+//     })
+
+const findProduct = async () => {
+    const foundProduct = await Product.findOne({ name: 'Bike Helmet' });
+    foundProduct.greet();
+    console.log(foundProduct);
+    await foundProduct.toggleOnSale();
+    console.log(foundProduct);
+}
+findProduct();
