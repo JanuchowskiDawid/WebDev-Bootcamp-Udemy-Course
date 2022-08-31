@@ -15,7 +15,8 @@ const verifyPassword = (req, res, next) => {
     if (password === 'nuggets') {
         next();
     }
-    res.send('Wrong password');
+    throw new Error('Password requiered');
+    // res.send('Wrong password');
 
 }
 
@@ -41,6 +42,14 @@ app.get('/dog', (req, res) => {
 
 app.use((req, res) => {
     res.send('404 not found');
+})
+
+app.use((err, req, res, next) => {
+    console.log("**********************");
+    console.log("**********************");
+    console.log("**********************");
+    // res.status(500).send("OH NO ERROR");
+    next(err);
 })
 
 app.listen(3000, () => {
