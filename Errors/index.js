@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 
+const AppError = require('./AppError');
 app.use(morgan('tiny'));
 // app.use((req, res, next) => {
 //     // req.method = 'GET';
@@ -15,7 +16,7 @@ const verifyPassword = (req, res, next) => {
     if (password === 'nuggets') {
         next();
     }
-    throw new Error('Password requiered');
+    throw new AppError('Password requiered', 401);
     // res.send('Wrong password');
 
 }
@@ -26,6 +27,10 @@ app.use('/dogs', (req, res, next) => {
 
 app.get('/error', (req, res) => {
     chicken.fly();
+})
+
+app.get('/admin', (req, res) => {
+    throw new AppError('You re not an admin', 403);
 })
 
 app.get('/', (req, res) => {
