@@ -18,10 +18,13 @@
         <ul>
             <li>Price: <%= product.price %>$
             </li>
-            <li>category: <a href="/products?category=<%= product.catergory %>">
-                    <%= product.catergory %>
+            <li>Category: <a href="/products?category=<%= product.category %>">
+                    <%= product.category %>
                 </a>
             </li>
+            <li>FARM: <a href="/farms/<%= product.farm._id %> ">
+                    <%= product.farm.name %>
+                </a> </li>
         </ul>
     </section>
     <a href="/products">Back to products</a>

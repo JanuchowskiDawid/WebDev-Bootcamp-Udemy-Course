@@ -11,7 +11,7 @@ const productSchema = new Schema({
         required: true,
         min: 0
     },
-    catergory: {
+    category: {
         type: String,
         lowercase: true,
         enum: ['fruit', 'vegetable', 'dairy']
