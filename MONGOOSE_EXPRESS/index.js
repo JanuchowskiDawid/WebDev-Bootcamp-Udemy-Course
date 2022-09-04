@@ -7,6 +7,7 @@ const AppError = require('./AppError');
 
 
 const Product = require('./models/product');
+const Farm = require('./models/farm');
 
 mongoose.connect('mongodb://localhost:27017/shop', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
@@ -26,13 +27,35 @@ app.use(methodOverride('_method'))
 const categories = ['fruit', 'vegetable', 'dairy'];
 
 function WrapAsync(fn) {
-    try {
-        fn(req, res, next).catch(e => next(e));
-    }
-    catch (e) {
-        next(e);
+    return function (req, res, next) {
+        fn(req, res, next).catch(e => next(e))
     }
 }
+// farm rotes
+app.get('/farms', WrapAsync(async (req, res) => {
+    const farms = await Farm.find({});
+    res.render('farms/index', { farms });
+}))
+
+app.get('/farms/new', (req, res) => {
+    res.render('farms/new');
+})
+
+app.post('/farms', WrapAsync(async (req, res, next) => {
+    const newFarm = new Farm(req.body);
+    await newFarm.save();
+    res.redirect(`/farms`);
+}))
+
+app.get('/farms/:id', WrapAsync(async (req, res, next) => {
+    const { id } = req.params;
+    const farm = await Farm.findById(id);
+    if (!farm) {
+        return next(new AppError('Product Not Found', 404));
+    }
+    res.render('farms/show', { farm })
+}))
+//  product routes
 
 app.get('/products', WrapAsync(async (req, res) => {
     const { category } = req.query;
@@ -59,16 +82,11 @@ app.get('/products/:id/edit', WrapAsync(async (req, res, next) => {
     res.render('products/edit', { product, categories });
 }))
 
-app.post('/products', async (req, res, next) => {
-    try {
-        const newProduct = new Product(req.body);
-        await newProduct.save();
-        res.redirect(`/products/${newProduct._id}`);
-    }
-    catch (e) {
-        next(e)
-    }
-})
+app.post('/products', WrapAsync(async (req, res, next) => {
+    const newProduct = new Product(req.body);
+    await newProduct.save();
+    res.redirect(`/products/${newProduct._id}`);
+}))
 
 
 app.get('/products/:id', WrapAsync(async (req, res, next) => {
@@ -91,6 +109,8 @@ app.delete('/products/:id', async (req, res) => {
     const product = await Product.findByIdAndDelete(id);
     res.redirect(`/products`);
 })
+
+// general routes
 
 app.use((err, req, res, next) => {
     const { status = 500, message = 'smth wrong' } = err;
