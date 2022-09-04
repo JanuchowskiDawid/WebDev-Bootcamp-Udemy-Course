@@ -19,6 +19,7 @@ mongoose.connect('mongodb://localhost:27017/shop', { useNewUrlParser: true, useU
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'))
 
@@ -59,17 +60,14 @@ app.get('/products/:id/edit', WrapAsync(async (req, res, next) => {
 }))
 
 app.post('/products', async (req, res, next) => {
-
-    return ((req, res, next) => {
-        try {
-            const newProduct = new Product(req.body);
-            await newProduct.save();
-            res.redirect(`/products/${newProduct._id}`);
-        }
-        catch (e) {
-            next(e)
-        }
-    })
+    try {
+        const newProduct = new Product(req.body);
+        await newProduct.save();
+        res.redirect(`/products/${newProduct._id}`);
+    }
+    catch (e) {
+        next(e)
+    }
 })
 
 
