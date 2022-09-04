@@ -73,6 +73,13 @@ app.post('/farms/:id/products', WrapAsync(async (req, res) => {
     await farm.save();
     res.redirect(`/farms/${id}`);
 }))
+
+app.delete('/farms/:id', async (req, res) => {
+    console.log('deleting');
+    const { id } = req.params;
+    const farm = await Farm.findByIdAndDelete(id);
+    res.redirect(`/farms`);
+})
 //  product routes
 
 app.get('/products', WrapAsync(async (req, res) => {
