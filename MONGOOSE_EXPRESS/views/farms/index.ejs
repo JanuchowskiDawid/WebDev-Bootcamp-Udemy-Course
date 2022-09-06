@@ -11,19 +11,20 @@
 </head>
 
 <body>
-    <h1>
-        Farms!
-    </h1>
-    <section>
-        <% for(let farm of farms){ %>
-            <ul>
-                <li>
-                    <%= farm.name %> - <%= farm.city %> <a href="/farms/<%= farm.id %> ">details</a>
-                </li>
-            </ul>
-            <% } %>
-    </section>
-    <a href="/farms/new">Add a farm</a>
+    <%= messages %>
+        <h1>
+            Farms!
+        </h1>
+        <section>
+            <% for(let farm of farms){ %>
+                <ul>
+                    <li>
+                        <%= farm.name %> - <%= farm.city %> <a href="/farms/<%= farm.id %> ">details</a>
+                    </li>
+                </ul>
+                <% } %>
+        </section>
+        <a href="/farms/new">Add a farm</a>
 </body>
 
 </html>

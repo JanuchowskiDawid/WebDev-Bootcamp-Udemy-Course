@@ -4,7 +4,18 @@ const path = require('path');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const AppError = require('./AppError');
+const session = require('express-session');
+const flash = require('connect-flash');
 
+
+const sessionOptions = {
+    secret: 'simplesecret',
+    resave: false,
+    saveUninitialized: false
+}
+
+app.use(session(sessionOptions));
+app.use(flash());
 
 const Product = require('./models/product');
 const Farm = require('./models/farm');
@@ -23,6 +34,11 @@ app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'))
+
+app.use((req, res, next) => {
+    res.locals.messages = req.flash('success');
+    next();
+})
 
 const categories = ['fruit', 'vegetable', 'dairy'];
 
@@ -44,6 +60,7 @@ app.get('/farms/new', (req, res) => {
 app.post('/farms', WrapAsync(async (req, res, next) => {
     const newFarm = new Farm(req.body);
     await newFarm.save();
+    req.flash('success', 'Successfully made a new farm!');
     res.redirect(`/farms`);
 }))
 
