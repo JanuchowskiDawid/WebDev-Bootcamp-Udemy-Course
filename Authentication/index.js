@@ -36,19 +36,17 @@ app.get('/login', (req, res) => {
 
 app.post('/register', async (req, res) => {
     const { password, username } = req.body;
-    const hash = await bcrypt.hash(password, 12);
-    const newUser = new User({ username, password: hash });
+    const newUser = new User({ username, password });
     await newUser.save();
-    req.session.user_id = user.id;
+    req.session.user_id = newUser.id;
     res.redirect('/');
 })
 
 app.post('/login', async (req, res) => {
     const { password, username } = req.body;
-    const user = await User.findOne({ username: username });
-    const validPassword = await bcrypt.compare(password, user.password);
-    if (validPassword) {
-        req.session.user_id = user.id;
+    const foundUser = await User.findAndValidate(username, password);
+    if (foundUser) {
+        req.session.user_id = foundUser.id;
         res.redirect("/secret")
     } else {
         res.send('Bad password or login')
