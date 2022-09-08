@@ -17,6 +17,12 @@ mongoose.connect('mongodb://localhost:27017/Bcrypt', { useNewUrlParser: true, us
 app.use(express.urlencoded({ extended: true }));
 app.use(session({ secret: 'nosecret' }));
 
+const requireLogin = function (req, res, next) {
+    if (!req.session.user_id) {
+        return res.redirect('/login')
+    }
+    next();
+}
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
@@ -58,8 +64,7 @@ app.post('/logout', (req, res) => {
 app.get('/', (req, res) => {
     res.send('homepage');
 })
-app.get('/secret', (req, res) => {
-    if (!req.session.user_id) { res.redirect('/login') };
+app.get('/secret', requireLogin, (req, res) => {
     res.render('secret');
 })
 
