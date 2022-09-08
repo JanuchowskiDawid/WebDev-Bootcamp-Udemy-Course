@@ -1,28 +1,42 @@
+const express = require('express');
+const app = express();
+const User = require('./models/user');
+const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const hashPassword = async (password) => {
-    const salt = await bcrypt.genSalt(14);
-    const hash = await bcrypt.hash(password, salt);
-    console.log(salt);
-    console.log(hash);
-}
+mongoose.connect('mongodb://localhost:27017/Bcrypt', { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log("mongo connected");
+    })
+    .catch((err) => {
+        console.log("ERROR! Mongo error :c");
+        console.log(err);
+    })
 
-const logIn = async (password, hashedPassword) => {
-    const result = await bcrypt.compare(password, hashedPassword);
-    if (result) {
-        console.log('logged you');
-    } else {
-        console.log('try again');
-    }
-}
+app.use(express.urlencoded({ extended: true }));
 
-// hashPassword('password');
-logIn('password', '$2b$14$F6WCO6pVR8IGvw0cqu1huelDd0mWA4S6GCmoFQopNi9Ct.yr/Umy6');
-logIn('password', '$2b$14$JwKU9BWFC5PeVOv/xSOtWu2pNRi86lgrqUqcpbAEAmQQf.hL/XcAS');
+app.set('view engine', 'ejs');
+app.set('views', 'views');
 
-const hashPasswordv2 = async (password) => {
-    const hash = await bcrypt.hash('password', 14);
-    console.log(hash);
-}
+app.get('/register', (req, res) => {
+    res.render('register')
+})
 
-hashPasswordv2('password');
+app.post('/register', async (req, res) => {
+    const { password, username } = req.body;
+    const hash = await bcrypt.hash(password, 12);
+    const newUser = new User({ username, password: hash });
+    await newUser.save();
+    res.redirect('/');
+})
+
+app.get('/', (req, res) => {
+    res.send('homepage');
+})
+app.get('/secret', (req, res) => {
+    res.send('You must be logged in to see me');
+})
+
+app.listen(3000, () => {
+    console.log('listening on 3000');
+})
